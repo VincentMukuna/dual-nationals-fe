@@ -27,10 +27,10 @@ export default async function PlayerSpotlight() {
         </div>
 
         <CarouselContent className="-ml-1">
-          {players.map((player, index) => (
+          {players.map((player: any, index: any) => (
             <CarouselItem
               key={player.id}
-              className="basis-[65%] self-center pl-0 sm:basis-1/2 md:basis-[35%] xl:basis-[26%]"
+              className="basis-[69%%] self-center pl-0 sm:basis-1/2 md:basis-[35%] xl:basis-[26%]"
             >
               <div className="p-1">
                 <PlayerCard player={player} />

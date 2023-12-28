@@ -2,25 +2,23 @@
 import { useState } from 'react'
 import { Input } from './ui/input'
 import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group'
-import stadium from '../../public/static/images/stadium.jpg'
-import Image from 'next/image'
 export default function PlayerSearchBox() {
   const [searchCategory, setSearchCategory] = useState('player')
   return (
     <section className=" relative flex flex-col justify-center  overflow-hidden rounded-md bg-[url('../../public/static/images/stadium.jpg')] bg-cover bg-right-bottom  p-3 ">
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-gray-950 from-30%  via-gray-950/70 to-transparent to-80%"></div>
       <div className="z-[2] flex flex-col gap-4">
-        <div className=" w-2/3 font-semibold text-gray-300 lg:w-2/4 lg:text-2xl lg:font-bold">
+        <div className=" w-2/3 font-semibold text-gray-300 sm:w-3/4 sm:text-2xl sm:font-semibold md:w-2/4 lg:font-bold">
           Start searching player or country on Dual Nationals
         </div>
-        <div className="relative flex text-sm ">
+        <div className="relative flex items-center text-sm ">
           <ToggleGroup
             type="single"
-            className="absolute"
+            className="absolute gap-0 -space-x-[0.22rem] last:rounded-l-none"
             value={searchCategory}
             onValueChange={(value) => setSearchCategory(value)}
           >
-            <ToggleGroupItem value="player">
+            <ToggleGroupItem value="player" className="rounded-r-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -37,7 +35,7 @@ export default function PlayerSearchBox() {
                 />
               </svg>
             </ToggleGroupItem>
-            <ToggleGroupItem value="country">
+            <ToggleGroupItem value="country" className="rounded-l-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -56,7 +54,7 @@ export default function PlayerSearchBox() {
             </ToggleGroupItem>
           </ToggleGroup>
           <Input
-            className=" border-none pl-28 text-xs focus-visible:ring-0 focus-visible:ring-offset-0  md:text-sm lg:max-w-[80%] dark:focus-visible:ring-0 dark:focus-visible:ring-offset-0"
+            className=" border-none pl-28 text-xs sm:max-w-[80%] md:text-sm"
             placeholder={`Search by ${searchCategory} name `}
           />
         </div>
