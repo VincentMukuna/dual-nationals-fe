@@ -7,15 +7,16 @@ import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
+import { Dialog, DialogClose, DialogContent, DialogFooter } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { useToast } from '@/components/ui/use-toast'
+import { useState } from 'react'
 
 const formSchema = z.object({
   fullname: z
@@ -24,11 +25,11 @@ const formSchema = z.object({
     .max(50, { message: 'Name should be less than 50 characters long' }),
   phoneNo: z.string().min(2, { message: 'Phone number must contain at least 2 characters' }),
   email: z.string().email({ message: 'Invalid email address' }),
-  message: z.string(),
+  message: z.string().min(2, { message: 'Message must contain at least 2 characters' }),
 })
 
 export default function ContactUS() {
-  const { toast } = useToast()
+  const [showDialog, setShowDialog] = useState(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,14 +43,8 @@ export default function ContactUS() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    toast({
-      title: 'You sent this message: ',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{values.message}</code>
-        </pre>
-      ),
-    })
+    setShowDialog(true)
+    form.reset()
   }
   return (
     <main className="mx-auto mt-8 flex flex-col gap-6 md:max-w-xl">
@@ -117,6 +112,32 @@ export default function ContactUS() {
           </Button>
         </form>
       </Form>
+
+      <Dialog open={showDialog} onOpenChange={(open) => setShowDialog(open)}>
+        <DialogContent className="flex max-w-xs flex-col items-center rounded-md text-center sm:max-w-sm">
+          <div className="flex aspect-square items-center justify-center rounded-full border-none bg-green-400/80 p-3">
+            <svg
+              className="h-7 w-7"
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M43.5919 15.0919L19.5919 39.092C19.3829 39.3017 19.1345 39.4681 18.861 39.5817C18.5875 39.6953 18.2943 39.7537 17.9981 39.7537C17.702 39.7537 17.4088 39.6953 17.1353 39.5817C16.8618 39.4681 16.6134 39.3017 16.4044 39.092L5.90438 28.592C5.69509 28.3827 5.52907 28.1342 5.4158 27.8607C5.30253 27.5873 5.24423 27.2942 5.24423 26.9982C5.24423 26.7022 5.30253 26.4091 5.4158 26.1357C5.52907 25.8622 5.69509 25.6137 5.90438 25.4045C6.11368 25.1952 6.36215 25.0291 6.6356 24.9159C6.90906 24.8026 7.20215 24.7443 7.49814 24.7443C7.79412 24.7443 8.08721 24.8026 8.36067 24.9159C8.63412 25.0291 8.88259 25.1952 9.09189 25.4045L18 34.3126L40.4081 11.9082C40.8308 11.4855 41.4041 11.248 42.0019 11.248C42.5997 11.248 43.1729 11.4855 43.5956 11.9082C44.0183 12.3309 44.2558 12.9042 44.2558 13.502C44.2558 14.0997 44.0183 14.673 43.5956 15.0957L43.5919 15.0919Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          Thank you for your submission. Our team will come back to you shortly.
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button className="font-semibold dark:text-black">Continue</Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </main>
   )
 }
