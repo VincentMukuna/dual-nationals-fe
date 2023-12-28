@@ -10,7 +10,7 @@ import Logo from './icons/logo'
 const Header = () => {
   const pathname = usePathname()
   return (
-    <header className="flex justify-between space-x-2 bg-primary-300/10  p-4 shadow-md ">
+    <header className="fixed z-20 flex w-full justify-between space-x-2 bg-gray-900  p-4 shadow-xl ">
       <div className="flex gap-2">
         <MobileNav />
         <Link href="/" aria-label={siteMetadata.headerTitle}>
