@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className="dark bg-black">
-      <body className={`${poppins.className} bg-slate-900/60 text-gray-300 antialiased`}>
+      <body className={`${poppins.className} bg-gray-950 text-gray-300 antialiased`}>
         <div className="flex min-h-screen flex-col justify-between">
           <div>
             <Header />
