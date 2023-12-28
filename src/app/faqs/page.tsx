@@ -16,7 +16,11 @@ export default function Faqs() {
       </div>
 
       <div className="flex flex-col gap-3">
-        <Accordion type="single" collapsible className="flex w-full flex-col gap-6">
+        <Accordion
+          type="single"
+          collapsible
+          className="flex w-full flex-col gap-6 text-gray-300/90"
+        >
           {faqs.map((faq) => (
             <AccordionItem key={faq.question} value={faq.question}>
               <AccordionTrigger>{faq.question}</AccordionTrigger>

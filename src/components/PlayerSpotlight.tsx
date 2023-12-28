@@ -15,7 +15,7 @@ export default async function PlayerSpotlight() {
   return (
     <section>
       <Carousel
-        className="max-w-xs overflow-x-hidden sm:max-w-xl md:max-w-2xl lg:max-w-4xl"
+        className="max-w-[25rem] overflow-x-hidden sm:max-w-2xl md:max-w-5xl xl:max-w-6xl "
         opts={{ align: 'start', dragFree: false }}
       >
         <div className="flex items-center justify-between ">
@@ -30,7 +30,7 @@ export default async function PlayerSpotlight() {
           {players.map((player, index) => (
             <CarouselItem
               key={player.id}
-              className="basis-5/6 pl-0 sm:basis-1/2 md:basis-2/5 lg:basis-1/3"
+              className="basis-[65%] self-center pl-0 sm:basis-1/2 md:basis-[35%] xl:basis-[26%]"
             >
               <div className="p-1">
                 <PlayerCard player={player} />
