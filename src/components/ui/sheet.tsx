@@ -27,6 +27,8 @@ const SheetClose = React.forwardRef<
   </SheetPrimitive.Close>
 ))
 
+SheetClose.displayName = SheetPrimitive.Close.displayName
+
 const SheetPortal = SheetPrimitive.Portal
 
 const SheetOverlay = React.forwardRef<

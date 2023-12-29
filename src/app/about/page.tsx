@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import React from 'react'
+import { genPageMetadata } from '../seo'
+export const metadata = genPageMetadata({ title: 'About Us' })
 
 export default function AboutPage() {
   return (
@@ -7,8 +8,8 @@ export default function AboutPage() {
       <div className="space-y-1">
         <h1 className="text-2xl font-semibold uppercase">About Us</h1>
         <h2 className="max-w-2xl  leading-6 ">
-          Change the way you find international futbol's next stars - there is a better way. Start
-          searching today!
+          Change the way you find international futbol&apos;s next stars - there is a better way.
+          Start searching today!
         </h2>
       </div>
       <Image
@@ -26,7 +27,7 @@ export default function AboutPage() {
           <div className="leading-relaxed  sm:max-w-md  lg:max-w-xl">
             Our platform is designed to make it easy for fans, players, and agents/administrators to
             quickly access information on players who are eligible to compete for a particular
-            country's national team.
+            country&apos;s national team.
           </div>
         </div>
       </div>
@@ -46,9 +47,10 @@ export default function AboutPage() {
             At Dual Nationals, we understand the importance of having accurate and up-to-date
             information when it comes to national team selection. Our team of experts is committed
             to providing you with the most comprehensive database of eligible players from around
-            the world. Whether you're a fan looking to keep track of your team's prospects, a player
-            seeking to represent your country of origin, or an agent/administrator searching for new
-            talent, Dual Nationals is the perfect resource for you.
+            the world. Whether you&apos;re a fan looking to keep track of your team&apos;s
+            prospects, a player seeking to represent your country of origin, or an
+            agent/administrator searching for new talent, Dual Nationals is the perfect resource for
+            you.
           </div>
         </div>
       </div>
@@ -66,11 +68,11 @@ export default function AboutPage() {
           </div>
           <div className="leading-relaxed sm:max-w-md  lg:max-w-xl">
             Our database is constantly updated with new players and information, so you can be sure
-            that you're always getting the most current data available. At Dual Nationals, we're
-            passionate about the beautiful game and the role that national teams play in bringing
-            people together from all walks of life. We believe that everyone should have the
-            opportunity to represent their country of origin, and we're proud to provide a platform
-            that helps make that dream a reality.
+            that you&apos;re always getting the most current data available. At Dual Nationals,
+            we&apos;re passionate about the beautiful game and the role that national teams play in
+            bringing people together from all walks of life. We believe that everyone should have
+            the opportunity to represent their country of origin, and we&apos;re proud to provide a
+            platform that helps make that dream a reality.
           </div>
         </div>
       </div>

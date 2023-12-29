@@ -1,6 +1,9 @@
 import { SVGLogo } from '@/components/icons'
 import steps from '@/data/steps'
 import Image from 'next/image'
+import { genPageMetadata } from '../seo'
+
+export const metadata = genPageMetadata({ title: 'How it Works' })
 
 export default function HowItWorksPage() {
   return (
@@ -8,8 +11,8 @@ export default function HowItWorksPage() {
       <div className="space-y-1">
         <h1 className="text-2xl font-semibold uppercase">How it works</h1>
         <h2 className="max-w-2xl  leading-6 ">
-          Change the way you find international futbol's next stars - there is a better way. Start
-          searching today!
+          Change the way you find international futbol&apos;s next stars - there is a better way.
+          Start searching today!
         </h2>
       </div>
 
@@ -29,7 +32,7 @@ export default function HowItWorksPage() {
           <div className="leading-relaxed  sm:max-w-md ">
             Our platform is designed to make it easy for fans, players, and agents/administrators to
             quickly access information on players who are eligible to compete for a particular
-            country's national team.
+            country&apos;s national team.
           </div>
         </div>
       </div>
