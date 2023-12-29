@@ -1,6 +1,8 @@
 import NewsHighlights from '@/app/(homepage)/NewsHighlights'
 import PlayerSearchBox from '@/app/(homepage)/PlayerSearchBox'
 import PlayerSpotlight from '@/app/(homepage)/PlayerSpotlight'
+import MostViewedPlayers from './(homepage)/MostViewedPlayers'
+import NewsFeed from './(homepage)/NewsFeed'
 
 export default function Home() {
   return (
@@ -8,6 +10,8 @@ export default function Home() {
       <NewsHighlights />
       <PlayerSearchBox />
       <PlayerSpotlight />
+      <MostViewedPlayers />
+      <NewsFeed />
     </main>
   )
 }
