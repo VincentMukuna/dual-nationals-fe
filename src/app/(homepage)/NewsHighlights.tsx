@@ -30,7 +30,6 @@ export default function NewsHighlights() {
     setCurrent(api.selectedScrollSnap() + 1)
 
     api.on('select', () => {
-      console.log('current')
       setCurrent(api.selectedScrollSnap() + 1)
     })
   }, [api])
@@ -68,7 +67,10 @@ export default function NewsHighlights() {
                   className=" object-cover"
                 />
                 <div className="absolute bottom-3 flex  flex-col gap-2 px-3 ">
-                  <p className="line-clamp-2 font-semibold text-gray-200 md:text-lg">
+                  <p
+                    className="line-clamp-2 font-semibold  text-gray-200
+                  md:text-lg"
+                  >
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, labore?
                   </p>
                   <p className="text-xs text-gray-400 ">{`CNN • 6mins`}</p>
@@ -78,7 +80,7 @@ export default function NewsHighlights() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="hidden flex-col gap-1 self-end sm:flex">
+      <div className="hidden flex-col gap-1 self-end sm:flex ">
         <div className="flex gap-1">
           <CarouselPrevious className="static translate-y-0" />
           <CarouselNext className="static translate-y-0" />
