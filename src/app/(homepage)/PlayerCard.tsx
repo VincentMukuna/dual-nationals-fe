@@ -131,7 +131,7 @@ export function PlayerCardClubLogo({ className }: { className?: string }) {
   const player = useContext(PlayerCardContext)
   return (
     <Avatar className={className}>
-      <AvatarImage src={player.club_logo} />
+      <AvatarImage src={player.club_logo} alt="Club logo" />
       <AvatarFallback />
     </Avatar>
   )
@@ -221,7 +221,7 @@ export function PlayerCardEligibleFlags() {
     }
     return (
       <Avatar className="h-6 w-6">
-        <AvatarImage src={player.citizenship_flag} />
+        <AvatarImage src={player.citizenship_flag} alt="players national team flag" />
         <AvatarFallback />
       </Avatar>
     )
