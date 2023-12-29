@@ -15,7 +15,7 @@ const Header = () => {
         <MobileNav />
         <Link href="/" aria-label={siteMetadata.headerTitle}>
           <div className="flex items-center gap-2 ">
-            <Logo />
+            <Logo aria-label="App logo" />
             <div className="block">
               <p className="text-sm font-semibold uppercase">{siteMetadata.title}</p>
               <p className="hidden text-xs uppercase text-gray-300 sm:block">
@@ -32,7 +32,7 @@ const Header = () => {
             href={link.href}
             className={`hidden flex-none rounded px-2 py-1 text-[0.8rem]  ${
               pathname.split('/').at(1) === link.href.slice(1)
-                ? ' bg-primary-900/15 text-primary-600 '
+                ? ' bg-primary-900/15 text-primary-500 '
                 : 'text-gray-900  hover:bg-primary-900/25 hover:text-primary-400 dark:text-gray-100'
             } transition md:block`}
           >
