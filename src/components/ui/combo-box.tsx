@@ -11,7 +11,7 @@ import {
   CommandItem,
 } from '@/components/ui/command'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import useFormValue from '@/lib/hooks/useFormValue'
+import useFieldValue from '@/lib/hooks/useFieldValue'
 
 export function ComboBox({
   values,
@@ -22,7 +22,7 @@ export function ComboBox({
   label: string
   name: string
 }) {
-  const { value, setValue } = useFormValue(name)
+  const { value, setValue } = useFieldValue(name)
   const [open, setOpen] = useState(false)
 
   return (
