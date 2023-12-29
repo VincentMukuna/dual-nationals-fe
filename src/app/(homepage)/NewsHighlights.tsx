@@ -1,7 +1,6 @@
 'use client'
 import Autoplay from 'embla-carousel-autoplay'
 
-import { Card, CardContent } from '@/components/ui/card'
 import { type CarouselApi } from '@/components/ui/carousel'
 
 import {
@@ -11,7 +10,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
-import placeholderImage from '../../public/static/images/manager-unsplash.jpg'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
@@ -63,7 +61,9 @@ export default function NewsHighlights() {
                 ></div>
                 <Image
                   priority
-                  src={placeholderImage}
+                  src="/static/images/manager-unsplash.jpg"
+                  width={1000}
+                  height={693}
                   alt={'Placeholder for' + index}
                   className=" object-cover"
                 />

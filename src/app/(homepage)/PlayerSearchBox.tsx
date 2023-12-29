@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
-import { Input } from './ui/input'
-import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group'
+import { Input } from '../../components/ui/input'
+import { ToggleGroup, ToggleGroupItem } from '../../components/ui/toggle-group'
 export default function PlayerSearchBox() {
   const [searchCategory, setSearchCategory] = useState('player')
   return (

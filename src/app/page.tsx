@@ -1,10 +1,10 @@
-import NewsHighlights from '@/components/NewsHighlights'
-import PlayerSearchBox from '@/components/PlayerSearchBox'
-import PlayerSpotlight from '@/components/PlayerSpotlight'
+import NewsHighlights from '@/app/(homepage)/NewsHighlights'
+import PlayerSearchBox from '@/app/(homepage)/PlayerSearchBox'
+import PlayerSpotlight from '@/app/(homepage)/PlayerSpotlight'
 
 export default function Home() {
   return (
-    <main className="flex flex-col  gap-4 pt-2 md:max-w-none">
+    <main className="flex flex-col  gap-8 pt-2 md:max-w-none">
       <NewsHighlights />
       <PlayerSearchBox />
       <PlayerSpotlight />

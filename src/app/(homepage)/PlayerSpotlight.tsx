@@ -6,7 +6,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from './ui/carousel'
+} from '../../components/ui/carousel'
 import PlayerCard from './PlayerCard'
 
 export default async function PlayerSpotlight() {
@@ -19,11 +19,7 @@ export default async function PlayerSpotlight() {
         opts={{ align: 'start', dragFree: false }}
       >
         <div className="flex items-center justify-between ">
-          <div className="font-semibold">Player Spotlight</div>
-          <div className="flex gap-1">
-            <CarouselPrevious className="static translate-y-0" />
-            <CarouselNext className="static translate-y-0" />
-          </div>
+          <div className="text-lg font-semibold">Player Spotlight</div>
         </div>
 
         <CarouselContent className="-ml-1">
@@ -38,6 +34,10 @@ export default async function PlayerSpotlight() {
             </CarouselItem>
           ))}
         </CarouselContent>
+        <div className="flex justify-end gap-1 ">
+          <CarouselPrevious className="static translate-y-0" />
+          <CarouselNext className="static translate-y-0" />
+        </div>
       </Carousel>
     </section>
   )
