@@ -1,4 +1,3 @@
-'use client'
 import {
   Accordion,
   AccordionContent,
@@ -6,6 +5,9 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import faqs from '@/data/faqs'
+import { genPageMetadata } from '../seo'
+
+export const metadata = genPageMetadata({ title: 'Frequently Asked Questions' })
 
 export default function Faqs() {
   return (
