@@ -16,6 +16,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import { Card, CardContent } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
+import _ from 'lodash'
 
 export default async function MostViewedPlayers() {
   const players = await fetchPlayers('_limit=3')
@@ -58,5 +61,41 @@ export default async function MostViewedPlayers() {
         </div>
       </Carousel>
     </section>
+  )
+}
+
+export function MostViewedPlayersSkeleton() {
+  return (
+    <Carousel
+      className="max-w-full overflow-x-hidden sm:max-w-2xl md:max-w-5xl xl:max-w-6xl "
+      opts={{ align: 'start', dragFree: false }}
+    >
+      <div className="flex items-center justify-between ">
+        <div className="text-lg font-semibold">Most Viewed Players</div>
+      </div>
+
+      <CarouselContent className="-ml-1">
+        {_.times(4).map((_, i) => (
+          <CarouselItem key={i} className="basis-[17.3rem] self-center pl-0 ">
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex  items-center gap-4 px-2 py-2">
+                  <Skeleton className="h-20 w-20 rounded-md" />
+
+                  <div className="flex basis-2/3 flex-col gap-2">
+                    <Skeleton className="h-3 w-full" />
+                    <Skeleton className="h-8 w-full" />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <div className="hidden justify-end gap-1 sm:flex ">
+        <CarouselPrevious className="static translate-y-0" />
+        <CarouselNext className="static translate-y-0" />
+      </div>
+    </Carousel>
   )
 }
