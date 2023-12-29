@@ -15,7 +15,7 @@ export default function AboutPage() {
         src={'/static/images/france-sm.png'}
         width={1000}
         height={300}
-        className=" aspect-video max-h-[25rem] overflow-hidden object-cover object-top "
+        className=" aspect-video max-h-[25rem] overflow-hidden rounded-lg object-cover object-top"
         alt="Screenshots of the dashboard project showing desktop version"
       />
       <div className="relative -mt-6 overflow-hidden py-8 opacity-90">
@@ -34,7 +34,7 @@ export default function AboutPage() {
         src={'/static/images/desktop-demo.png'}
         width={800}
         height={500}
-        className=" ] aspect-video overflow-hidden object-cover  "
+        className=" ] aspect-video overflow-hidden rounded-lg object-cover "
         alt="Screenshots of the dashboard project showing desktop version"
       />
       <div className="relative -mt-6 overflow-hidden py-8 opacity-90">
@@ -56,7 +56,7 @@ export default function AboutPage() {
         src={'/static/images/mobile-demo.png'}
         width={800}
         height={500}
-        className=" ] aspect-video overflow-hidden object-cover  "
+        className=" ] aspect-video overflow-hidden rounded-lg  object-cover"
         alt="Screenshots of the dashboard project showing desktop version"
       />
       <div className="relative -mt-6 overflow-hidden py-8 opacity-90">

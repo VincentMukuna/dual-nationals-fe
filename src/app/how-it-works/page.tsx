@@ -17,7 +17,7 @@ export default function HowItWorksPage() {
         src={'/static/images/holding-phone.png'}
         width={1000}
         height={300}
-        className="aspect-video max-h-[25rem] overflow-hidden object-cover md:aspect-auto "
+        className="aspect-video max-h-[25rem] overflow-hidden rounded-lg object-cover md:aspect-auto "
         alt="Screenshots of the dashboard project showing desktop version"
       />
       <div className="relative  overflow-hidden py-8 opacity-90">
