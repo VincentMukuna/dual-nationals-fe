@@ -11,6 +11,7 @@ import {
   IconVerified,
 } from '../../components/icons'
 import { useContext, createContext, ReactNode } from 'react'
+import CustomLink from '@/components/Link'
 
 const PlayerCardContext = createContext<any>({})
 
@@ -40,37 +41,39 @@ export default function PlayerCardDefault({
   variant?: 'summary'
 }) {
   return (
-    <PlayerCardContext.Provider value={player}>
-      <Card className="ml-2">
-        <CardContent
-          className="flex flex-col gap-4 divide-y divide-gray-800 p-0 px-3 pb-2 text-sm text-gray-300
+    <CustomLink href={`/players/${player.id}`}>
+      <PlayerCardContext.Provider value={player}>
+        <Card className="ml-2">
+          <CardContent
+            className="flex flex-col gap-4 divide-y divide-gray-800 p-0 px-3 pb-2 text-sm text-gray-300
           [&>div]:pt-2
       "
-        >
-          <div className="flex flex-col gap-1">
-            <div className="flex justify-between">
-              <PlayerCardAvatar />
-              <div className="flex space-x-2">
-                <Share2 />
-                <Heart />
+          >
+            <div className="flex flex-col gap-1">
+              <div className="flex justify-between">
+                <PlayerCardAvatar />
+                <div className="flex space-x-2">
+                  <Share2 />
+                  <Heart />
+                </div>
+              </div>
+              <PlayerCardName />
+              <div className="flex items-center gap-2 text-[0.72rem] sm:text-xs">
+                <PlayerCardJerseyNo />
+                <span>{` • `}</span>
+                <PlayerCardPosition />
+                <span>{` • `}</span>
+                <PlayerCardAge />
+                <span>{` • `}</span>
+                <PlayerCardPriceTag />
               </div>
             </div>
-            <PlayerCardName />
-            <div className="flex items-center gap-2 text-[0.72rem] sm:text-xs">
-              <PlayerCardJerseyNo />
-              <span>{` • `}</span>
-              <PlayerCardPosition />
-              <span>{` • `}</span>
-              <PlayerCardAge />
-              <span>{` • `}</span>
-              <PlayerCardPriceTag />
-            </div>
-          </div>
-          <PlayerCardClubStats />
-          <PlayerCardNTStats />
-        </CardContent>
-      </Card>
-    </PlayerCardContext.Provider>
+            <PlayerCardClubStats />
+            <PlayerCardNTStats />
+          </CardContent>
+        </Card>
+      </PlayerCardContext.Provider>
+    </CustomLink>
   )
 }
 
