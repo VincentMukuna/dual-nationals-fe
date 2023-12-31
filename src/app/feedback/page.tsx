@@ -11,14 +11,13 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form'
-import { Dialog, DialogContent, DialogFooter } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogFooter, DialogClose } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
 import { Button } from '@/components/ui/button'
 import { ComboBox } from '../../components/ui/combo-box'
 import { useState } from 'react'
-import { DialogClose } from '@radix-ui/react-dialog'
 
 const feedbackPurposes = ['error-message', 'feature-request', 'account-issues'] as const
 

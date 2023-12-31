@@ -47,7 +47,7 @@ export default function ContactUS() {
     form.reset()
   }
   return (
-    <main className="mx-auto mt-8 flex flex-col gap-6 md:max-w-xl">
+    <div className="mx-auto mt-8 flex flex-col gap-6 md:max-w-xl">
       <div className="space-y-1">
         <h1 className="text-2xl font-semibold uppercase">Contact Us</h1>
         <h2 className="text-lg leading-6">Please complete the form below</h2>
@@ -138,6 +138,6 @@ export default function ContactUS() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </main>
+    </div>
   )
 }
