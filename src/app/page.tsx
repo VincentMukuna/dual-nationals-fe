@@ -7,7 +7,7 @@ import { Suspense } from 'react'
 
 export default function Home() {
   return (
-    <main className="flex flex-col  gap-8 pt-2 md:max-w-none">
+    <div className="flex flex-col  gap-8 pt-2 md:max-w-none">
       <NewsHighlights />
       <PlayerSearchBox />
       <Suspense fallback={<PlayerSpotlightSkeleton />}>
@@ -18,6 +18,6 @@ export default function Home() {
       </Suspense>
 
       <NewsFeed />
-    </main>
+    </div>
   )
 }

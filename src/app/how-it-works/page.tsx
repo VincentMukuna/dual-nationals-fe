@@ -7,7 +7,7 @@ export const metadata = genPageMetadata({ title: 'How it Works' })
 
 export default function HowItWorksPage() {
   return (
-    <div className="mx-auto mt-8 flex max-w-3xl flex-col gap-10">
+    <div className="mx-auto mt-8 flex max-w-3xl flex-col gap-10 ">
       <div className="space-y-1">
         <h1 className="text-2xl font-semibold uppercase">How it works</h1>
         <h2 className="max-w-2xl  leading-6 ">
@@ -25,15 +25,15 @@ export default function HowItWorksPage() {
       />
       <div className="relative  overflow-hidden py-8 opacity-90">
         <div className=" mt-2 flex  flex-col gap-10">
-          <div className=" max-w-[24rem] border-s-2  border-green-600 py-2 pl-4 font-semibold tracking-wide">
+          <p className=" max-w-[24rem] border-s-2  border-green-600 py-2 pl-4 font-semibold tracking-wide">
             Lets unravel the mechanics behind Dual Nationals
-          </div>
+          </p>
           <SVGLogo className=" absolute bottom-3 right-0  -z-20" />
-          <div className="leading-relaxed  sm:max-w-md ">
+          <p className="leading-relaxed  sm:max-w-md ">
             Our platform is designed to make it easy for fans, players, and agents/administrators to
             quickly access information on players who are eligible to compete for a particular
             country&apos;s national team.
-          </div>
+          </p>
         </div>
       </div>
 

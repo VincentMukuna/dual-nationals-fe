@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             <SectionContainer>
               <BreadCrumbs />
-              {children}
+              <main>{children}</main>
             </SectionContainer>
           </div>
 
