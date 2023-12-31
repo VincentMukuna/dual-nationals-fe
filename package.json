@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "local": "concurrently \"npm run dev\" \"node src/scripts/server.js\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.3",
@@ -43,6 +44,7 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
+    "json-server": "^0.17.4",
     "postcss": "^8",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
