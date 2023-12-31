@@ -26,7 +26,7 @@ export default function NewsFeed() {
                   alt="image"
                   width={100}
                   height={100}
-                  className=" max-w-20 shrink-0 basis-28 overflow-hidden rounded-md"
+                  className=" max-w-20 shrink-0 basis-28 overflow-hidden rounded-md text-xs italic"
                 />
               </div>
               <div className="flex flex-col gap-1 text-xs  font-semibold  sm:text-sm">
