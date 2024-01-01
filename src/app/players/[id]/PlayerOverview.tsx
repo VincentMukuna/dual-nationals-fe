@@ -8,8 +8,9 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { User } from 'lucide-react'
 import { IconJersey, IconVerified } from '@/components/icons'
+import { Player } from '@/lib/schemas'
 
-export default function PlayerOverview({ player }: { player: any }) {
+export default function PlayerOverview({ player }: { player: Player }) {
   return (
     <PlayerInfoSection
       value="overview"

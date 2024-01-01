@@ -16,27 +16,28 @@ import {
   IconStopWatch,
   IconYellowCard,
 } from '@/components/icons'
+import { Player } from '@/lib/schemas'
 
-export default function CurrentSeasonStats({ player }: { player: any }) {
+export default function CurrentSeasonStats({ player }: { player: Player }) {
   return (
     <PlayerInfoSection
       value="current-season-stats"
       trigger={
         <PlayerInfoSectionTitle className="flex items-center gap-2">
           <Avatar className="h-12 w-12 ">
-            <AvatarImage src={player.competion_logo} />
+            <AvatarImage src={player.club_logo} />
             <AvatarFallback className="h-12 w-12 rounded-md" />
           </Avatar>
           Current Season Stats
         </PlayerInfoSectionTitle>
       }
     >
-      {player.current_seasons_stats.competions.map((competition: string, i: number) => {
+      {player.current_seasons_stats.competions.map((competition, i) => {
         return (
           <div key={i} className="flex flex-col gap-2">
             <PlayerInfoSubSectionTitle className="flex items-center gap-2">
               <Avatar className="h-12 w-12 rounded-md">
-                <AvatarImage src={player.competion_logo} />
+                <AvatarImage src={player.current_seasons_stats.competion_logo[i]} />
                 <AvatarFallback className="h-14 w-14 rounded-md" />
               </Avatar>
               <div>

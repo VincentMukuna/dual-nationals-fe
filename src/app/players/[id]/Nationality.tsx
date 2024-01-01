@@ -1,3 +1,4 @@
+import { Player } from '@/lib/schemas'
 import {
   PlayerInfoItem,
   PlayerInfoItemLabel,
@@ -6,7 +7,7 @@ import {
   PlayerInfoSectionTitle,
 } from './components'
 
-export default function Nationality({ player }: { player: any }) {
+export default function Nationality({ player }: { player: Player }) {
   return (
     <PlayerInfoSection
       className="max-w-sm"

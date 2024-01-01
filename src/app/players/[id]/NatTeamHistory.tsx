@@ -8,8 +8,9 @@ import {
   PlayerInfoSectionTitle,
   PlayerInfoSubSectionTitle,
 } from './components'
+import { Player } from '@/lib/schemas'
 
-export default function NatTeamHistory({ player }: { player: any }) {
+export default function NatTeamHistory({ player }: { player: Player }) {
   return (
     <PlayerInfoSection
       value="nat-team-history"

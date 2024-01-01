@@ -17,21 +17,22 @@ import {
   IconStopWatch,
   IconYellowCard,
 } from '@/components/icons'
+import { Player } from '@/lib/schemas'
 
-export default function ClubHistory({ player }: { player: any }) {
+export default function ClubHistory({ player }: { player: Player }) {
   return (
     <PlayerInfoSection
       value="club-history"
       trigger={<PlayerInfoSectionTitle>Club History</PlayerInfoSectionTitle>}
     >
       <div className="flex flex-col gap-8">
-        {player.club_stats.clubs.map((club: string, i: number) => {
+        {player.club_stats.clubs.map((club, i) => {
           return (
             <div key={i} className="flex flex-col gap-3">
               <PlayerInfoSubSectionTitle>
-                <Avatar className="h-12 w-12 rounded-md">
-                  <AvatarImage src={player.competion_logo} />
-                  <AvatarFallback className="h-14 w-14 rounded-md" />
+                <Avatar className="h-10 w-10 rounded-md">
+                  <AvatarImage src={player.club_stats.club_logo[i]} />
+                  <AvatarFallback className="h-10 w-10 rounded-md" />
                 </Avatar>{' '}
                 {club}
               </PlayerInfoSubSectionTitle>

@@ -62,3 +62,5 @@ export const PlayerSchema = z.object({
     competion_logo: z.array(z.string()),
   }),
 })
+
+export type Player = z.infer<typeof PlayerSchema>

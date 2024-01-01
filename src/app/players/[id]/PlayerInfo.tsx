@@ -5,8 +5,9 @@ import {
   PlayerInfoSection,
   PlayerInfoSectionTitle,
 } from './components'
+import { Player } from '@/lib/schemas'
 
-export default function PlayerInfo({ player }: { player: any }) {
+export default function PlayerInfo({ player }: { player: Player }) {
   return (
     <PlayerInfoSection
       value="player-info"
