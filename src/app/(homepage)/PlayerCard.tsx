@@ -12,6 +12,7 @@ import {
 } from '../../components/icons'
 import { useContext, createContext, ReactNode } from 'react'
 import CustomLink from '@/components/Link'
+import { Player } from '@/lib/schemas'
 
 const PlayerCardContext = createContext<any>({})
 
@@ -20,17 +21,19 @@ export function PlayerCard({
   children,
   className,
 }: {
-  player: any
+  player: Player
   children: ReactNode
   className?: string
 }) {
   return (
     <PlayerCardContext.Provider value={player}>
-      <Card>
-        <CardContent className={className}>{children}</CardContent>
-      </Card>
+      <Card className={className}>{children}</Card>
     </PlayerCardContext.Provider>
   )
+}
+
+const usePlayerCardContext = () => {
+  return useContext(PlayerCardContext) as Player
 }
 
 export default function PlayerCardDefault({
@@ -78,7 +81,7 @@ export default function PlayerCardDefault({
 }
 
 export function PlayerCardName({ className }: { className?: string }) {
-  const player = useContext(PlayerCardContext)
+  const player = usePlayerCardContext()
   return (
     <span className={cn(' flex items-center font-semibold', className)}>
       {player.name}
@@ -88,7 +91,7 @@ export function PlayerCardName({ className }: { className?: string }) {
 }
 
 export function PlayerCardAvatar({ className }: { className?: string }) {
-  const player = useContext(PlayerCardContext)
+  const player = usePlayerCardContext()
   return (
     <Avatar className={cn('h-14 w-14 rounded-sm', className)}>
       <AvatarImage src={player.headshot} alt={`@${player.name}`} className="" />
@@ -98,16 +101,16 @@ export function PlayerCardAvatar({ className }: { className?: string }) {
     </Avatar>
   )
 }
-export function PlayerCardAge() {
-  const player = useContext(PlayerCardContext)
+export function PlayerCardAge({ className }: { className?: string }) {
+  const player = usePlayerCardContext()
   return (
-    <span>
+    <span className={className}>
       <span className="text-gray-400">Age</span> {`${player['age']}`}
     </span>
   )
 }
 export function PlayerCardJerseyNo() {
-  const player = useContext(PlayerCardContext)
+  const player = usePlayerCardContext()
   return (
     <div className="flex items-center gap-1 ">
       <IconJersey />
@@ -116,14 +119,14 @@ export function PlayerCardJerseyNo() {
   )
 }
 
-export function PlayerCardPosition() {
-  const player = useContext(PlayerCardContext)
-  return <span>{getPosInitials(player['main_position'])}</span>
+export function PlayerCardPosition({ className }: { className?: string }) {
+  const player = usePlayerCardContext()
+  return <span className={className}>{getPosInitials(player['main_position'])}</span>
 }
-export function PlayerCardPriceTag() {
-  const player = useContext(PlayerCardContext)
+export function PlayerCardPriceTag({ className }: { className?: string }) {
+  const player = usePlayerCardContext()
   return (
-    <div className="flex gap-1">
+    <div className={cn('flex gap-1', className)}>
       <Tag className="h-4 w-4" />
       {`€${player['market_value'] || 'N/A'}`}
     </div>
@@ -131,17 +134,17 @@ export function PlayerCardPriceTag() {
 }
 
 export function PlayerCardClubLogo({ className }: { className?: string }) {
-  const player = useContext(PlayerCardContext)
+  const player = usePlayerCardContext()
   return (
     <Avatar className={className}>
       <AvatarImage src={player.club_logo} alt="Club logo" />
-      <AvatarFallback />
+      <AvatarFallback className={className} />
     </Avatar>
   )
 }
 
 export function PlayerCardClubStats() {
-  const player = useContext(PlayerCardContext)
+  const player = usePlayerCardContext()
 
   return (
     <div className="flex flex-col gap-2 py-1">
@@ -171,7 +174,7 @@ export function PlayerCardClubStats() {
 }
 
 export function PlayerCardNTLogo({ className }: { className?: string }) {
-  const player = useContext(PlayerCardContext)
+  const player = usePlayerCardContext()
   return (
     <Avatar className={className}>
       <AvatarImage src={player.national_team_flag} />
@@ -180,7 +183,7 @@ export function PlayerCardNTLogo({ className }: { className?: string }) {
   )
 }
 export function PlayerCardNTStats() {
-  const player = useContext(PlayerCardContext)
+  const player = usePlayerCardContext()
 
   return (
     <div className="flex flex-col gap-2 py-1">
@@ -206,26 +209,30 @@ export function PlayerCardNTStats() {
           <IconBall />
           {player.national_team_stats.goals[0] || 'N/A'}
         </span>
-        <span className="flex items-center gap-1 text-xs">
+        {/* <span className="flex items-center gap-1 text-xs">
           <IconBoot />
-          {player.national_team_stats?.assists?.at(0) || 'N/A'}
-        </span>
+          {player.national_team_stats.assists || 'N/A'}
+        </span> */}
       </div>
     </div>
   )
 }
 
-export function PlayerCardEligibleFlags() {
-  const player = useContext(PlayerCardContext)
+export function PlayerCardEligibleFlags({ className }: { className?: string }) {
+  const player = usePlayerCardContext()
 
   if (typeof player.citizenship_flag === 'string') {
     if (player.citizenship_flag === player.national_team_flag) {
       return null
     }
     return (
-      <Avatar className="h-6 w-6">
-        <AvatarImage src={player.citizenship_flag} alt="players national team flag" />
-        <AvatarFallback />
+      <Avatar className={cn('h-6 w-6', className)}>
+        <AvatarImage
+          className={cn('h-6 w-6', className)}
+          src={player.citizenship_flag}
+          alt="players national team flag"
+        />
+        <AvatarFallback className={cn('h-6 w-6', className)} />
       </Avatar>
     )
   }
@@ -233,9 +240,9 @@ export function PlayerCardEligibleFlags() {
   return player.citizenship_flag
     .filter((flag: any) => flag != player.national_team_flag)
     .map((flag: any) => (
-      <Avatar key={flag} className="h-6 w-6">
+      <Avatar key={flag} className={cn('h-6 w-6', className)}>
         <AvatarImage src={flag} />
-        <AvatarFallback />
+        <AvatarFallback className={cn('h-6 w-6', className)} />
       </Avatar>
     ))
 }
