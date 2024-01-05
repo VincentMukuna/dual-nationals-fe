@@ -56,7 +56,6 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  modal,
 }: {
   children: React.ReactNode
   modal: React.ReactNode
@@ -69,10 +68,7 @@ export default function RootLayout({
             <Header />
             <SectionContainer>
               <BreadCrumbs />
-              <main>
-                {children}
-                {modal}
-              </main>
+              <main>{children}</main>
             </SectionContainer>
           </div>
 
