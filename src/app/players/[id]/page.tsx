@@ -1,21 +1,19 @@
-import { IconJersey, IconVerified } from '@/components/icons'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import ClubHistory from '@/components/players/ClubHistory'
+import CurrentSeasonStats from '@/components/players/CurrentSeasonStats'
+import NatTeamHistory from '@/components/players/NatTeamHistory'
+import Nationality from '@/components/players/Nationality'
+import PlayerInfo from '@/components/players/PlayerInfo'
+import PlayerOverview from '@/components/players/PlayerOverview'
+import { Accordion } from '@/components/ui/accordion'
 import { fetchPlayer } from '@/lib/data'
 import { Player, PlayerSchema } from '@/lib/schemas'
-import { cn } from '@/lib/utils'
 import _ from 'lodash'
-import { Tag, User } from 'lucide-react'
+import { Metadata } from 'next'
 
-import { notFound } from 'next/navigation'
-import { ReactNode } from 'react'
-import PlayerOverview from './PlayerOverview'
-import { z } from 'zod'
-import PlayerInfo from './PlayerInfo'
-import Nationality from './Nationality'
-import CurrentSeasonStats from './CurrentSeasonStats'
-import ClubHistory from './ClubHistory'
-import NatTeamHistory from './NatTeamHistory'
-import { Accordion } from '@/components/ui/accordion'
+export const metadata: Metadata = {
+  title: 'Player Statistics',
+  description: 'Detailed player statistics for both club and national teams',
+}
 
 export default async function PlayerPage({ params }: { params: { id: string } }) {
   const res = await fetchPlayer(params.id).then((resArray) => resArray[0])
