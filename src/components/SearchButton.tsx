@@ -1,22 +1,47 @@
-function SearchButton() {
-	return (
-		<button>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				strokeWidth={1.5}
-				stroke="currentColor"
-				className="h-6 w-6 text-gray-900 dark:text-gray-100"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-				/>
-			</svg>
-		</button>
-	);
-}
+'use client'
 
-export default SearchButton;
+import * as React from 'react'
+import { useRouter } from 'next/navigation'
+import { cn } from '@/lib/utils'
+import { DialogProps } from '@radix-ui/react-dialog'
+import { fetchPlayers } from '@/lib/data'
+import { Player, PlayerSchema } from '@/lib/schemas'
+import { useDebouncedCallback } from 'use-debounce'
+import CustomLink from './Link'
+
+export default function Search({ ...props }: DialogProps) {
+  // React.useEffect(() => {
+  //   const down = (e: KeyboardEvent) => {
+  //     if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === '/') {
+  //       if (
+  //         (e.target instanceof HTMLElement && e.target.isContentEditable) ||
+  //         e.target instanceof HTMLInputElement ||
+  //         e.target instanceof HTMLTextAreaElement ||
+  //         e.target instanceof HTMLSelectElement
+  //       ) {
+  //         return
+  //       }
+
+  //       e.preventDefault()
+  //     }
+  //   }
+
+  //   document.addEventListener('keydown', down)
+  //   return () => document.removeEventListener('keydown', down)
+  // }, [])
+
+  return (
+    <CustomLink
+      href="/players/search"
+      scroll={false}
+      className={cn(
+        'bg-background text-muted-foreground relative flex h-10 w-full  items-center justify-start rounded-full text-sm font-normal shadow-none sm:pr-12 md:w-40 lg:w-64'
+      )}
+    >
+      <span className="inline-flex">Search for players...</span>
+      <kbd className="bg-muted pointer-events-none absolute right-[0.3rem] top-[0.6rem] hidden h-5 select-none items-center gap-1 rounded  px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+        <span className="text-xs">⌘</span>K
+      </kbd>
+    </CustomLink>
+  )
+}
