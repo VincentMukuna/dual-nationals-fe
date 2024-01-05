@@ -7,7 +7,7 @@ import {
   PlayerInfoSection,
   PlayerInfoSectionTitle,
   PlayerInfoSubSectionTitle,
-} from './components'
+} from './PlayerStatsSections'
 import { Player } from '@/lib/schemas'
 
 export default function NatTeamHistory({ player }: { player: Player }) {

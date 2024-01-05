@@ -4,7 +4,7 @@ import {
   PlayerInfoItemStat,
   PlayerInfoSection,
   PlayerInfoSectionTitle,
-} from './components'
+} from './PlayerStatsSections'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { User } from 'lucide-react'
 import { IconJersey, IconVerified } from '@/components/icons'

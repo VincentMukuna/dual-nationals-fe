@@ -7,7 +7,7 @@ import {
   PlayerInfoSection,
   PlayerInfoSectionTitle,
   PlayerInfoSubSectionTitle,
-} from './components'
+} from './PlayerStatsSections'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import {
   IconBall,

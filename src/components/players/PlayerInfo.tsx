@@ -4,7 +4,7 @@ import {
   PlayerInfoItemStat,
   PlayerInfoSection,
   PlayerInfoSectionTitle,
-} from './components'
+} from './PlayerStatsSections'
 import { Player } from '@/lib/schemas'
 
 export default function PlayerInfo({ player }: { player: Player }) {
