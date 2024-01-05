@@ -54,7 +54,13 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+  modal,
+}: {
+  children: React.ReactNode
+  modal: React.ReactNode
+}) {
   return (
     <html lang="en" suppressHydrationWarning className="dark bg-black">
       <body className={`${poppins.className} bg-gray-950 text-gray-300 antialiased`}>
@@ -63,7 +69,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             <SectionContainer>
               <BreadCrumbs />
-              <main>{children}</main>
+              <main>
+                {children}
+                {modal}
+              </main>
             </SectionContainer>
           </div>
 
