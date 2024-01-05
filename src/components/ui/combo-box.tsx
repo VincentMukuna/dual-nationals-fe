@@ -38,13 +38,13 @@ export function ComboBox({
           <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full" sideOffset={0}>
+      <PopoverContent className="" sideOffset={0}>
         <Command>
           <CommandInput
             placeholder={`Search a ${name}`}
             className="border-b-none dark:border-none"
           />
-          <CommandEmpty>{`No ${name} found.`}</CommandEmpty>
+          <CommandEmpty className="flex w-[clamp(100px,90vw,39rem)] justify-center pb-4 text-sm">{`No ${name} found.`}</CommandEmpty>
           <CommandGroup>
             {values.map((item, i) => (
               <CommandItem
@@ -54,6 +54,7 @@ export function ComboBox({
                   setValue(currentValue === value ? '' : currentValue)
                   setOpen(false)
                 }}
+                className="w-[clamp(100px,90vw,40rem)]"
               >
                 <Check
                   className={cn('mr-2 h-4 w-4', value === item.value ? 'opacity-100' : 'opacity-0')}
