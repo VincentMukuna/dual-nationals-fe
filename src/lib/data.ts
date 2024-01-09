@@ -1,11 +1,9 @@
-import { unstable_noStore as noStore } from 'next/cache'
-import { PlayerSchema } from './schemas'
 import { z } from 'zod'
+import { PlayerSchema } from './schemas'
 
 const PlayersArraySchema = z.array(PlayerSchema)
 
 export async function fetchPlayers(query: string = '') {
-  noStore()
   const url = process.env['NEXT_PUBLIC_BACKEND_URL']
   const res = await fetch(`${url}/players?${query}`)
   return await res.json()
