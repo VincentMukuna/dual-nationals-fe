@@ -16,12 +16,14 @@ export const metadata: Metadata = {
 }
 
 export default async function PlayerPage({ params }: { params: { id: string } }) {
+  if (!params.id) return null
   const res = await fetchPlayer(params.id).then((resArray) => resArray[0])
   const parsed = PlayerSchema.safeParse(res)
   let player: Player
   if (parsed.success) {
     player = parsed.data
   } else {
+    console.log('error', parsed.error)
     throw new Error('Invalid schema')
   }
 
