@@ -1,33 +1,16 @@
 'use client'
 
-import * as React from 'react'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import useURLParam from '@/lib/hooks/useURLParam'
 import { cn } from '@/lib/utils'
 import { DialogProps } from '@radix-ui/react-dialog'
-import { fetchPlayers } from '@/lib/data'
-import { Player, PlayerSchema } from '@/lib/schemas'
-import { useDebouncedCallback } from 'use-debounce'
-import CustomLink from './Link'
-import { Button } from './ui/button'
-import { CommandDialog, CommandInput } from './ui/command'
-import SearchResults from './players/search-dialog-results'
+import * as React from 'react'
+import { Button } from '../ui/button'
+import { CommandDialog, CommandInput } from '../ui/command'
+import SearchResults from './search-dialog-results'
 
 export default function Search({ ...props }: DialogProps) {
   const [showDialog, setShowDialog] = React.useState(false)
-  const searchParams = useSearchParams()
-  const router = useRouter()
-  const pathname = usePathname()
-
-  const handleSearch = useDebouncedCallback((term: string) => {
-    const params = new URLSearchParams(searchParams)
-
-    if (term) {
-      params.set('search', term)
-    } else {
-      params.delete('search')
-    }
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
-  }, 300)
+  const { handleChange: handleSearch, searchParams, router, pathname } = useURLParam()
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || e.key === '/') {
@@ -67,21 +50,21 @@ export default function Search({ ...props }: DialogProps) {
         open={showDialog}
         onOpenChange={(open) => {
           if (!open) {
+            const params = new URLSearchParams(searchParams)
+            params.delete('search')
+            router.replace(`${pathname}`, { scroll: false })
             setShowDialog(false)
-            router.back()
           }
         }}
-        className="px-1"
+        className=""
       >
         <CommandInput
-          onValueChange={handleSearch}
-          defaultValue={searchParams.get('search') || ''}
+          onValueChange={(value) => handleSearch('name_like', value)}
           spellCheck={false}
           className=" "
         />
-        <React.Suspense>
-          <SearchResults query={searchParams.get('search') || ''} />
-        </React.Suspense>
+
+        <SearchResults />
       </CommandDialog>
     </>
   )

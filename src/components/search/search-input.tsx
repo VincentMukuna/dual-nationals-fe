@@ -1,32 +1,18 @@
 'use client'
-import { Input } from './ui/input'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { useDebouncedCallback } from 'use-debounce'
-import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group'
+import useURLParam from '@/lib/hooks/useURLParam'
 import { useState } from 'react'
+import { Input } from '../ui/input'
+import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group'
 
 export default function SearchInput() {
   const [searchCategory, setSearchCategory] = useState('player')
 
-  const searchParams = useSearchParams()
-  const router = useRouter()
-  const pathname = usePathname()
-
-  const handleSearch = useDebouncedCallback((term: string) => {
-    const params = new URLSearchParams(searchParams)
-
-    if (term) {
-      params.set('search', term)
-    } else {
-      params.delete('search')
-    }
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
-  }, 300)
+  const { handleChange: handleSearch, searchParams } = useURLParam()
   return (
     <div className="relative flex items-center text-sm ">
       <ToggleGroup
         type="single"
-        className="absolute z-20 gap-0 -space-x-[0.22rem]  last:rounded-l-none"
+        className="absolute z-10 gap-0 -space-x-[0.22rem]  last:rounded-l-none"
         value={searchCategory}
         onValueChange={(value) => setSearchCategory(value)}
       >
@@ -66,10 +52,11 @@ export default function SearchInput() {
         </ToggleGroupItem>
       </ToggleGroup>
       <Input
-        defaultValue={searchParams.get('search') || ''}
-        onChange={(e) => handleSearch(e.target.value)}
+        defaultValue={searchParams.get('name_like') || ''}
+        onChange={(e) => handleSearch('name_like', e.target.value)}
         className=" border-none pl-28 text-xs md:text-sm"
         placeholder={`Search by ${searchCategory} name `}
+        autoFocus
       />
     </div>
   )

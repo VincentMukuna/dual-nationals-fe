@@ -1,8 +1,4 @@
-import { fetchPlayers } from '@/lib/data'
-import React from 'react'
-import { CommandEmpty, CommandItem, CommandList } from '../ui/command'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import { Player } from '@/lib/schemas'
+'use client'
 import {
   PlayerCard,
   PlayerCardAge,
@@ -12,10 +8,29 @@ import {
   PlayerCardPosition,
   PlayerCardPriceTag,
 } from '@/app/(homepage)/PlayerCard'
+import { fetchPlayers } from '@/lib/data'
+import { Player } from '@/lib/schemas'
+import { useSearchParams } from 'next/navigation'
+import { useQuery } from 'react-query'
 import CustomLink from '../Link'
+import { CommandEmpty, CommandItem, CommandList } from '../ui/command'
 
-export default async function SearchResults({ query }: { query: string }) {
-  const players = await fetchPlayers(`name_like=${query || ''}&_limit=3`)
+export default function SearchDialogResults() {
+  const searchParams = useSearchParams()
+  const {
+    data: players,
+    isLoading,
+    error,
+  } = useQuery(`players/${searchParams.toString()}`, () =>
+    fetchPlayers(`${searchParams.toString()}&_limit=3`)
+  )
+  if (isLoading) {
+    return <p className="text-center">Loading...</p>
+  }
+  if (error) {
+    return <p>Oops! Something went wrong!</p>
+  }
+
   return (
     <CommandList className="border-t border-gray-800 pt-2">
       <CommandEmpty>No such players</CommandEmpty>
