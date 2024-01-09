@@ -10,9 +10,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { cn } from '@/lib/utils'
 
 const NEWS_AUTOPLAY_DELAY = 60 * 1000
 
@@ -45,13 +45,13 @@ export default function NewsHighlights() {
           delay: NEWS_AUTOPLAY_DELAY,
         }),
       ]}
-      className="flex flex-col gap-2  "
+      className="flex  flex-col gap-2 self-center "
     >
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index} className="ml-0 basis-[93%]">
             <div className="">
-              <div className="relative  flex  overflow-hidden rounded-xl md:aspect-[7/3]">
+              <div className="relative  flex  overflow-hidden rounded-xl md:aspect-[7/2.5]">
                 <div
                   className={cn(
                     `absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/30 to-black/70  transition-all hover:bg-black/10`,
