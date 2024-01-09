@@ -1,9 +1,9 @@
 import NewsHighlights from '@/app/(homepage)/NewsHighlights'
 import PlayerSearchBox from '@/app/(homepage)/PlayerSearchBox'
 import PlayerSpotlight, { PlayerSpotlightSkeleton } from '@/app/(homepage)/PlayerSpotlight'
+import { Suspense } from 'react'
 import MostViewedPlayers, { MostViewedPlayersSkeleton } from './(homepage)/MostViewedPlayers'
 import NewsFeed from './(homepage)/NewsFeed'
-import { Suspense } from 'react'
 
 export default function Home() {
   return (
