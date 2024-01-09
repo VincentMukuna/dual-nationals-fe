@@ -1,13 +1,14 @@
-import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
-import './globals.css'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import { TailwindIndicator } from '@/components/utils/tailwind-indicator'
-import SectionContainer from '@/components/SectionContainer'
 import BreadCrumbs from '@/components/BreadCrumbs'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+import SectionContainer from '@/components/SectionContainer'
 import { Toaster } from '@/components/ui/toaster'
+import { TailwindIndicator } from '@/components/utils/tailwind-indicator'
 import siteMetadata from '@/data/siteMetadata'
+import type { Metadata } from 'next'
+import { Poppins } from 'next/font/google'
+import './globals.css'
+import Providers from './providers'
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -62,21 +63,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className="dark bg-black">
-      <body className={`${poppins.className} bg-gray-950 text-gray-300 antialiased`}>
-        <div className="flex min-h-screen flex-col justify-between">
-          <div>
-            <Header />
-            <SectionContainer>
-              <BreadCrumbs />
-              <main>{children}</main>
-            </SectionContainer>
-          </div>
+      <Providers>
+        <body className={`${poppins.className} bg-gray-950 text-gray-300 antialiased`}>
+          <div className="flex min-h-screen flex-col justify-between">
+            <div>
+              <Header />
+              <SectionContainer>
+                <BreadCrumbs />
+                <main>{children}</main>
+              </SectionContainer>
+            </div>
 
-          <Footer />
-          <TailwindIndicator />
-        </div>
-        <Toaster />
-      </body>
+            <Footer />
+            <TailwindIndicator />
+          </div>
+          <Toaster />
+        </body>
+      </Providers>
     </html>
   )
 }
