@@ -5,7 +5,7 @@ import { ToggleGroup, ToggleGroupItem } from '../../components/ui/toggle-group'
 export default function PlayerSearchBox() {
   const [searchCategory, setSearchCategory] = useState('player')
   return (
-    <section className=" relative flex flex-col justify-center  overflow-hidden rounded-md bg-[url('../../public/static/images/stadium.jpg')] bg-cover bg-right-bottom  p-3 ">
+    <section className=" relative flex flex-col justify-center  overflow-hidden  bg-[url('../../public/static/images/stadium.jpg')] bg-cover bg-right-bottom  p-3 ">
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-gray-950 from-30%  via-gray-950/70 to-transparent to-80%"></div>
       <div className="z-[2] flex flex-col gap-4">
         <div className=" w-2/3 font-semibold text-gray-300 sm:w-3/4 sm:text-2xl sm:font-semibold md:w-2/4 lg:font-bold">
