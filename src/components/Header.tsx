@@ -1,13 +1,12 @@
 'use client'
-import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Link from './Link'
-import MobileNav from './MobileNav'
-import SearchButton from './search/SearchButton'
+import siteMetadata from '@/data/siteMetadata'
+import { User } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Logo from './icons/logo'
-import { User } from 'lucide-react'
-import CustomLink from './Link'
+import { default as CustomLink, default as Link } from './link'
+import MobileNav from './mobile-nav'
+import SearchButton from './search/SearchButton'
 
 const Header = () => {
   const pathname = usePathname()
@@ -44,7 +43,7 @@ const Header = () => {
       </div>
       <div className="ml-4 flex items-center gap-2">
         <SearchButton />
-        <CustomLink href={'/login'}>
+        <CustomLink href={'/login'} aria-label="View account information">
           <User />
         </CustomLink>
       </div>

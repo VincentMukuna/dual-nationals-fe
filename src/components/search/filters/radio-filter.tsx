@@ -3,7 +3,7 @@ import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import useURLParam from '@/lib/hooks/useURLParam'
 import { cn } from '@/lib/utils'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type option = { label: string; value: string }
 
@@ -16,11 +16,13 @@ export default function RadioFilter({
   param: string
   options: option[]
 }) {
-  const { handleChange: handleFilterInputChange, searchParams } = useURLParam()
+  const { handleChange: handleTabChange, searchParams } = useURLParam()
   const [value, setValue] = useState<option>(options[0])
   // useEffect(() => {
   //   setValue(searchParams.get(param) || '')
   // }, [param, searchParams])
+
+  useEffect(() => {}, [value])
   return (
     <div className="grid gap-2">
       <Label className="text-xs">{label}</Label>
@@ -29,11 +31,12 @@ export default function RadioFilter({
         defaultValue={options[0].value}
         onValueChange={(val) => {
           setValue(options.find((opt) => opt.value === val)!)
+          handleTabChange(param, val)
         }}
       >
         {options.map((option) => (
           <RadioGroupItem
-            className={cn({ 'border-none bg-primary-700': value.value === option.value })}
+            className={cn({ 'border-none bg-primary-500': value.value === option.value })}
             value={option.value}
             key={option.value}
           >

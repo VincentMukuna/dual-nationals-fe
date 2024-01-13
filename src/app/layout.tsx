@@ -1,7 +1,7 @@
-import BreadCrumbs from '@/components/BreadCrumbs'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import SectionContainer from '@/components/SectionContainer'
+import BreadCrumbs from '@/components/breadcrumbs'
+import Footer from '@/components/footer'
+import Header from '@/components/header'
+import SectionContainer from '@/components/section-container'
 import { Toaster } from '@/components/ui/toaster'
 import { TailwindIndicator } from '@/components/utils/tailwind-indicator'
 import siteMetadata from '@/data/siteMetadata'
@@ -64,7 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="dark bg-black">
       <Providers>
-        <body className={`${poppins.className} bg-gray-950 text-gray-300 antialiased`}>
+        <body className={` bg-gray-950 text-gray-300 antialiased`}>
           <div className="flex min-h-screen flex-col justify-between">
             <div>
               <Header />

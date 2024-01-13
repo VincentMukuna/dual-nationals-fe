@@ -12,7 +12,7 @@ import { fetchPlayers } from '@/lib/data'
 import { Player } from '@/lib/schemas'
 import { useSearchParams } from 'next/navigation'
 import { useQuery } from 'react-query'
-import CustomLink from '../Link'
+import CustomLink from '../link'
 import { CommandEmpty, CommandItem, CommandList } from '../ui/command'
 
 export default function SearchDialogResults() {

@@ -1,11 +1,12 @@
 import { Player } from '@/lib/schemas'
+import _ from 'lodash'
 import {
   PlayerInfoItem,
   PlayerInfoItemLabel,
   PlayerInfoItemStat,
   PlayerInfoSection,
   PlayerInfoSectionTitle,
-} from './PlayerStatsSections'
+} from './player-stats-sections'
 
 export default function Nationality({ player }: { player: Player }) {
   return (
@@ -17,7 +18,9 @@ export default function Nationality({ player }: { player: Player }) {
       <div className="flex justify-between pe-8">
         <PlayerInfoItem>
           <PlayerInfoItemLabel>Nationality</PlayerInfoItemLabel>
-          <PlayerInfoItemStat>{player.citizenship[0]}</PlayerInfoItemStat>
+          <PlayerInfoItemStat>
+            {_.isArray(player.citizenship) ? player.citizenship[0] : player.citizenship}
+          </PlayerInfoItemStat>
         </PlayerInfoItem>
         <PlayerInfoItem>
           <PlayerInfoItemLabel>Debut</PlayerInfoItemLabel>

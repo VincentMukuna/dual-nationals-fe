@@ -1,13 +1,12 @@
+import { Accordion } from '@/components/ui/accordion'
 import { fetchPlayer } from '@/lib/data'
 import { Player, PlayerSchema } from '@/lib/schemas'
-import _ from 'lodash'
-import PlayerOverview from './PlayerOverview'
-import PlayerInfo from './PlayerInfo'
-import Nationality from './Nationality'
-import CurrentSeasonStats from './CurrentSeasonStats'
-import ClubHistory from './ClubHistory'
-import NatTeamHistory from './NatTeamHistory'
-import { Accordion } from '@/components/ui/accordion'
+import ClubHistory from './club-history'
+import CurrentSeasonStats from './current-season-stats'
+import Nationality from './nationality'
+import PlayerInfo from './player-info'
+import NatTeamHistory from './player-nat-team-history'
+import PlayerOverview from './player-overview'
 
 export default async function PlayerPage({ params }: { params: { id: string } }) {
   const res = await fetchPlayer(params.id).then((resArray) => resArray[0])

@@ -1,10 +1,8 @@
 'use client'
-import { usePathname } from 'next/navigation'
-import Link from './Link'
-import React from 'react'
 import headerNavLinks from '@/data/headerNavLinks'
 import { ChevronRight } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { usePathname } from 'next/navigation'
+import CustomLink from './link'
 
 function BreadCrumbs() {
   const pathname = usePathname()
@@ -21,14 +19,14 @@ function BreadCrumbs() {
           )
         }
         return (
-          <Link key={link} href={link} className={'flex items-center gap-1'}>
+          <CustomLink key={link} href={link} className={'flex items-center gap-1'}>
             {headerNavLinks.find((navLink) => navLink.href === link)?.title}{' '}
             {i !== arr.length - 1 && (
               <span>
                 <ChevronRight className="h-4 w-4" />
               </span>
             )}
-          </Link>
+          </CustomLink>
         )
       })}
     </div>
