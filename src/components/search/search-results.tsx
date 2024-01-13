@@ -12,7 +12,8 @@ import { fetchPlayers } from '@/lib/data'
 import { Player } from '@/lib/schemas'
 import _ from 'lodash'
 import { MoreVertical } from 'lucide-react'
-import CustomLink from '../Link'
+import { IconNoPlayerFound } from '../icons'
+import CustomLink from '../link'
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
 import SearchFilters from './filters/search-filters'
 
@@ -29,17 +30,31 @@ export default async function PlayerSearchResultsList({
 
   const players: Player[] = await fetchPlayers(queryStr)
   return (
-    <div className="flex flex-col gap-3 ">
+    <div className="flex h-full flex-col gap-3 ">
       <div className="flex justify-between">
-        <div className="text-lg font-semibold">{players.length} player&#10088;s&#10089; found</div>
-        <Dialog>
-          <DialogTrigger>Filters</DialogTrigger>
-          <DialogContent className=" max-h-[70vh] max-w-[min(98vw,24rem)] overflow-y-auto  pt-12">
-            <SearchFilters />
-          </DialogContent>
-        </Dialog>
+        {players.length > 0 && (
+          <div className="text-lg font-semibold">
+            {players.length} player&#10088;s&#10089; found
+          </div>
+        )}
+        <div className="ml-auto lg:hidden">
+          <Dialog>
+            <DialogTrigger>Filters</DialogTrigger>
+            <DialogContent className=" max-h-[70vh] max-w-[min(98vw,24rem)] overflow-y-auto  pt-12">
+              <SearchFilters />
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
-      {players.length < 1 && <p className="text-center">No such player</p>}
+      {players.length < 1 && (
+        <div className="flex h-[min(24rem,70vh)] flex-col items-center justify-center gap-4">
+          <IconNoPlayerFound />
+          <div className="max-w-xs text-center text-sm ">
+            Sorry we couldn&apos;t find any player based on your search filters. Please review your
+            entry and try again
+          </div>
+        </div>
+      )}
       {players.map((player) => (
         <PlayerCard
           player={player}
