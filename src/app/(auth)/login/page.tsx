@@ -1,5 +1,5 @@
 'use client'
-import CustomLink from '@/components/Link'
+import CustomLink from '@/components/link'
 import { Button } from '@/components/ui/button'
 import {
   Form,
@@ -12,7 +12,6 @@ import {
 import { Input } from '@/components/ui/input'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
-import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -21,7 +20,7 @@ const formSchema = z.object({
   password: z.string().min(6, { message: 'Password must contain at least 6 characters' }),
 })
 
-export default function page() {
+export default function LoginPage() {
   const router = useRouter()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -61,7 +60,15 @@ export default function page() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <div className="flex justify-between">
+                  <FormLabel>Password</FormLabel>
+                  <CustomLink
+                    href={'/forgot-password'}
+                    className="text-xs text-primary-500 hover:underline"
+                  >
+                    Forgot password?
+                  </CustomLink>
+                </div>
                 <FormControl>
                   <Input type="password" placeholder="password" {...field} />
                 </FormControl>
@@ -73,7 +80,7 @@ export default function page() {
             Login
           </Button>
           <div className="flex justify-center gap-1 text-sm">
-            <span>Don't have an account?</span>
+            <span>Don&apos;t have an account?</span>
             <CustomLink href={'/register'} className="text-primary-400 hover:underline">
               Register
             </CustomLink>
