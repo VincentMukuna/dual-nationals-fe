@@ -1,4 +1,4 @@
-import { AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion'
+import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { cn } from '@/lib/utils'
 import { ReactNode } from 'react'
 
@@ -16,7 +16,7 @@ export function PlayerInfoSection({
   return (
     <AccordionItem value={value} className="shadow-md">
       <AccordionTrigger className="items-center p-3">{trigger}</AccordionTrigger>
-      <AccordionContent className={cn('flex flex-col gap-6 p-1 py-4 ', className)}>
+      <AccordionContent className={cn('flex flex-col gap-6 p-2 py-4 ', className)}>
         {children}
       </AccordionContent>
     </AccordionItem>
@@ -46,9 +46,7 @@ export function PlayerInfoItemLabel({ className, children }: SectionProps) {
 }
 export function PlayerInfoItemStat({ className, children }: SectionProps) {
   return (
-    <div className={cn('line-clamp-1 flex items-center gap-2 text-base', className)}>
-      {children}
-    </div>
+    <div className={cn('line-clamp-1 flex items-center gap-2 text-sm', className)}>{children}</div>
   )
 }
 export function PlayerInfoItemStatGroup({ className, children }: SectionProps) {

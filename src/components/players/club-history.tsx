@@ -1,14 +1,3 @@
-import React from 'react'
-import {
-  PlayerInfoItem,
-  PlayerInfoItemLabel,
-  PlayerInfoItemStat,
-  PlayerInfoItemStatGroup,
-  PlayerInfoSection,
-  PlayerInfoSectionTitle,
-  PlayerInfoSubSectionTitle,
-} from './PlayerStatsSections'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import {
   IconBall,
   IconBoot,
@@ -17,7 +6,17 @@ import {
   IconStopWatch,
   IconYellowCard,
 } from '@/components/icons'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Player } from '@/lib/schemas'
+import {
+  PlayerInfoItem,
+  PlayerInfoItemLabel,
+  PlayerInfoItemStat,
+  PlayerInfoItemStatGroup,
+  PlayerInfoSection,
+  PlayerInfoSectionTitle,
+  PlayerInfoSubSectionTitle,
+} from './player-stats-sections'
 
 export default function ClubHistory({ player }: { player: Player }) {
   return (
@@ -33,7 +32,7 @@ export default function ClubHistory({ player }: { player: Player }) {
                 <Avatar className="h-10 w-10 rounded-md">
                   <AvatarImage src={player.club_stats.club_logo[i]} />
                   <AvatarFallback className="h-10 w-10 rounded-md" />
-                </Avatar>{' '}
+                </Avatar>
                 {club}
               </PlayerInfoSubSectionTitle>
               <PlayerInfoItemStatGroup>

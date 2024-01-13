@@ -1,18 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import Link from './Link'
 import headerNavLinks from '@/data/headerNavLinks'
 import { usePathname } from 'next/navigation'
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from './ui/sheet'
+import { useState } from 'react'
+import Link from './link'
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from './ui/sheet'
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false)

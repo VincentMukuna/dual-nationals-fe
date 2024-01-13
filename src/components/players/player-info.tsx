@@ -1,11 +1,10 @@
-import React from 'react'
+import { Player } from '@/lib/schemas'
 import {
   PlayerInfoItemLabel,
   PlayerInfoItemStat,
   PlayerInfoSection,
   PlayerInfoSectionTitle,
-} from './PlayerStatsSections'
-import { Player } from '@/lib/schemas'
+} from './player-stats-sections'
 
 export default function PlayerInfo({ player }: { player: Player }) {
   return (

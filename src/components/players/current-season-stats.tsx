@@ -1,13 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import {
-  PlayerInfoItem,
-  PlayerInfoItemLabel,
-  PlayerInfoItemStat,
-  PlayerInfoItemStatGroup,
-  PlayerInfoSection,
-  PlayerInfoSectionTitle,
-  PlayerInfoSubSectionTitle,
-} from './PlayerStatsSections'
 import {
   IconBall,
   IconBoot,
@@ -16,7 +6,17 @@ import {
   IconStopWatch,
   IconYellowCard,
 } from '@/components/icons'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Player } from '@/lib/schemas'
+import {
+  PlayerInfoItem,
+  PlayerInfoItemLabel,
+  PlayerInfoItemStat,
+  PlayerInfoItemStatGroup,
+  PlayerInfoSection,
+  PlayerInfoSectionTitle,
+  PlayerInfoSubSectionTitle,
+} from './player-stats-sections'
 
 export default function CurrentSeasonStats({ player }: { player: Player }) {
   return (
