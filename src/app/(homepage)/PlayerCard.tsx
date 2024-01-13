@@ -1,8 +1,9 @@
 'use client'
-import { Avatar, AvatarFallback, AvatarImage } from '../../components/ui/avatar'
-import { Heart, Share2, Tag, User } from 'lucide-react'
+import CustomLink from '@/components/link'
+import { Player } from '@/lib/schemas'
 import { cn, getPosInitials } from '@/lib/utils'
-import { Card, CardContent } from '../../components/ui/card'
+import { Heart, Share2, Tag, User } from 'lucide-react'
+import { ReactNode, createContext, useContext } from 'react'
 import {
   IconBall,
   IconBoot,
@@ -10,9 +11,8 @@ import {
   IconJersey,
   IconVerified,
 } from '../../components/icons'
-import { useContext, createContext, ReactNode } from 'react'
-import CustomLink from '@/components/Link'
-import { Player } from '@/lib/schemas'
+import { Avatar, AvatarFallback, AvatarImage } from '../../components/ui/avatar'
+import { Card, CardContent } from '../../components/ui/card'
 
 const PlayerCardContext = createContext<any>({})
 
