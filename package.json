@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "server": "node src/scripts/server.js",
-    "fe": "next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "dev": "concurrently \"npm:fe\" \"npm:server\""
+    "lint": "next lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.3",
