@@ -3,13 +3,7 @@ import Autoplay from 'embla-carousel-autoplay'
 
 import { type CarouselApi } from '@/components/ui/carousel'
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel'
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -80,15 +74,6 @@ export default function NewsHighlights() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="hidden flex-col gap-1 self-end sm:flex ">
-        <div className="flex gap-1">
-          <CarouselPrevious className="static translate-y-0" />
-          <CarouselNext className="static translate-y-0" />
-        </div>
-        <span className="text-xs italic">{`Slide ${
-          api?.selectedScrollSnap() + 1 || '-'
-        } of ${count}`}</span>
-      </div>
     </Carousel>
   )
 }
