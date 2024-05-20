@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 
 export default function TagFilter({ param }: { param: string }) {
   const { handleChange, searchParams, pathname, router } = useURLParam()
+  const params = new URLSearchParams(searchParams)
 
   function getInitialParams() {
     let initialTags: Tag[] = []
@@ -20,21 +21,19 @@ export default function TagFilter({ param }: { param: string }) {
 
   const [tags, setTags] = useState<Tag[]>(getInitialParams())
 
-  function handleTagChange(value: Tag[]) {
-    const params = new URLSearchParams(searchParams)
-    params.delete(param)
-    const query: string[] = []
-    for (const tag of value) {
-      query.push(`${param}=${tag.text}`)
-    }
-    const queryStr = query.join('&')
-
-    router.replace(`${pathname}?${params.toString()}&${queryStr}`)
-  }
-
   useEffect(() => {
+    function handleTagChange(value: Tag[]) {
+      params.delete(param)
+      const query: string[] = []
+      for (const tag of value) {
+        query.push(`${param}=${tag.text}`)
+      }
+      const queryStr = query.join('&')
+
+      router.replace(`${pathname}?${params.toString()}&${queryStr}`)
+    }
     handleTagChange(tags)
-  }, [tags])
+  }, [tags, param, params, pathname, router])
 
   return (
     <div className="grid gap-2">
@@ -44,7 +43,6 @@ export default function TagFilter({ param }: { param: string }) {
           size={'sm'}
           tags={tags}
           setTags={(newTags) => {
-            console.log('tags change', newTags)
             setTags(newTags)
           }}
           maxTags={4}
