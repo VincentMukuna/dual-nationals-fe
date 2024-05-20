@@ -6,7 +6,7 @@ Install dependencies
 npm install
 ```
 
-Rename `.env.example` to `.env`
+Copy `.env.example` to a new `.env`
 
 Run the development server:
 
