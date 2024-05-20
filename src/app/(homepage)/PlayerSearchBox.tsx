@@ -1,9 +1,15 @@
 'use client'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Input } from '../../components/ui/input'
 import { ToggleGroup, ToggleGroupItem } from '../../components/ui/toggle-group'
 export default function PlayerSearchBox() {
-  const [searchCategory, setSearchCategory] = useState('player')
+  const [searchCategory, setSearchCategory] = useState('name')
+  const router = useRouter()
+
+  const handleSearch = (search: string) => {
+    router.push(`/players?${searchCategory}_like=${search}`)
+  }
   return (
     <section className=" relative flex flex-col justify-center  overflow-hidden  bg-[url('../../public/static/images/stadium.jpg')] bg-cover bg-right-bottom  p-3 ">
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-gray-950 from-30%  via-gray-950/70 to-transparent to-80%"></div>
@@ -18,7 +24,7 @@ export default function PlayerSearchBox() {
             value={searchCategory}
             onValueChange={(value) => setSearchCategory(value)}
           >
-            <ToggleGroupItem value="player" className="rounded-r-none">
+            <ToggleGroupItem value="name" className="rounded-r-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -35,7 +41,7 @@ export default function PlayerSearchBox() {
                 />
               </svg>
             </ToggleGroupItem>
-            <ToggleGroupItem value="country" className="rounded-l-none">
+            <ToggleGroupItem value="citizenship" className="rounded-l-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -53,10 +59,21 @@ export default function PlayerSearchBox() {
               </svg>
             </ToggleGroupItem>
           </ToggleGroup>
-          <Input
-            className=" border-none pl-28 text-xs sm:max-w-[80%] md:text-sm"
-            placeholder={`Search by ${searchCategory} name `}
-          />
+          <form
+            className="w-full"
+            onSubmit={(e) => {
+              e.preventDefault()
+              const form = e.currentTarget
+              const data = new FormData(form)
+              handleSearch(data.get('search') as string)
+            }}
+          >
+            <Input
+              name="search"
+              className=" border-none pl-28 text-xs sm:max-w-[80%] md:text-sm"
+              placeholder={`Search by ${searchCategory}`}
+            />
+          </form>
         </div>
       </div>
     </section>
